@@ -4,6 +4,8 @@ Thumbs.db
 node_modules/
 .vscode/
 .idea/
-install-git.ps1
-find-git.ps1
-setup-git.ps1
+setup.bat
+deploy.bat
+push-update.bat
+push.bat
+check-remote.bat
