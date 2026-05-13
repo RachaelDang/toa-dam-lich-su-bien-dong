@@ -8,4 +8,7 @@ setup.bat
 deploy.bat
 push-update.bat
 push.bat
+push-final.bat
 check-remote.bat
+cleanup-push.bat
+push-responsive.bat
