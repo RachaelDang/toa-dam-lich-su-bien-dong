@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tranh luận & Bình chọn - Diễn Đàn Biển Đông</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <a href="index.html" class="logo"><i class='bx bx-globe'></i> Diễn Đàn Biển Đông</a>
+            <p class="tagline">Đối thoại - Hợp tác - Hòa bình</p>
+        </div>
+        <div class="header-right">
+            <nav class="navbar">
+                <a href="index.html" style="--i:1">Trang chủ</a>
+                <a href="delegates.html" style="--i:3">Đại biểu</a>
+                <a href="debate.html" style="--i:4" class="active">Tranh luận & Bình chọn</a>
+            </nav>
+            <div class="dkn-box"><span class="dkn">DKN KND</span></div>
+        </div>
+    </header>
+    <section class="debate-page">
+        <div class="debate-content">
+            <h1>Tranh luận & Bình chọn</h1>
+
+            <div class="debate-grid">
+                <div class="debate-item">
+                    <h3>Chủ đề tranh luận</h3>
+                    <p style="color: #fff; margin-bottom: 20px; font-size: 18px; font-weight: 600;">Chủ quyền Biển Đông</p>
+                </div>
+                <div class="debate-item">
+                    <h3>Bình chọn đại biểu ưu tú</h3>
+                    <p style="color: #ccc; margin-bottom: 20px; font-size: 14px;">Bình chọn cho đại biểu thể hiện tốt nhất quan điểm</p>
+                    <button class="vote-btn" onclick="scrollToVote()">Bắt đầu bình chọn</button>
+                </div>
+            </div>
+
+            <div class="vote-grid" id="voteGrid">
+                <div class="vote-card" data-country="vietnam">
+                    <span class="vote-flag">🇻🇳</span>
+                    <h3>Vietnam</h3>
+                    <span class="vote-count" id="count-vietnam">0</span>
+                    <button class="vote-btn-sm" onclick="vote('vietnam')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="china">
+                    <span class="vote-flag">🇨🇳</span>
+                    <h3>China</h3>
+                    <span class="vote-count" id="count-china">0</span>
+                    <button class="vote-btn-sm" onclick="vote('china')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="cambodia">
+                    <span class="vote-flag">🇰🇭</span>
+                    <h3>Cambodia</h3>
+                    <span class="vote-count" id="count-cambodia">0</span>
+                    <button class="vote-btn-sm" onclick="vote('cambodia')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="taiwan">
+                    <span class="vote-flag">🇹🇼</span>
+                    <h3>Taiwan</h3>
+                    <span class="vote-count" id="count-taiwan">0</span>
+                    <button class="vote-btn-sm" onclick="vote('taiwan')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="indonesia">
+                    <span class="vote-flag">🇮🇩</span>
+                    <h3>Indonesia</h3>
+                    <span class="vote-count" id="count-indonesia">0</span>
+                    <button class="vote-btn-sm" onclick="vote('indonesia')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="philippines">
+                    <span class="vote-flag">🇵🇭</span>
+                    <h3>Philippines</h3>
+                    <span class="vote-count" id="count-philippines">0</span>
+                    <button class="vote-btn-sm" onclick="vote('philippines')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="thailand">
+                    <span class="vote-flag">🇹🇭</span>
+                    <h3>Thailand</h3>
+                    <span class="vote-count" id="count-thailand">0</span>
+                    <button class="vote-btn-sm" onclick="vote('thailand')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="malaysia">
+                    <span class="vote-flag">🇲🇾</span>
+                    <h3>Malaysia</h3>
+                    <span class="vote-count" id="count-malaysia">0</span>
+                    <button class="vote-btn-sm" onclick="vote('malaysia')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="singapore">
+                    <span class="vote-flag">🇸🇬</span>
+                    <h3>Singapore</h3>
+                    <span class="vote-count" id="count-singapore">0</span>
+                    <button class="vote-btn-sm" onclick="vote('singapore')">Bình chọn</button>
+                </div>
+                <div class="vote-card" data-country="brunei">
+                    <span class="vote-flag">🇧🇳</span>
+                    <h3>Brunei</h3>
+                    <span class="vote-count" id="count-brunei">0</span>
+                    <button class="vote-btn-sm" onclick="vote('brunei')">Bình chọn</button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <h2>Kết quả bình chọn</h2>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span id="loadingStatus" style="font-size: 13px; color: #aaa;">🔴 Chưa kết nối</span>
+                        <button class="vote-btn-sm reset-btn" onclick="resetVotes()">🔄 Reset</button>
+                    </div>
+                </div>
+                <div class="results-list" id="resultsList">
+                    <p style="text-align: center; color: #ccc;">Đang tải kết quả...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // ============================================================
+        // SUPABASE CONFIG — ĐĂNG KÝ TẠI supabase.com ĐỂ LẤY URL VÀ KEY
+        // ============================================================
+        const SUPABASE_URL = '';    // Ví dụ: 'https://xyzcompanyid.supabase.co'
+        const SUPABASE_ANON_KEY = ''; // Ví dụ: 'eyJhbGciOiJIUzI1NiIsInR...'
+
+        const supabaseClient = SUPABASE_URL
+            ? Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : null;
+
+        // ============================================================
+        // CLIENT ID - dùng để tránh vote trùng lặp
+        // ============================================================
+        function getClientId() {
+            let cid = localStorage.getItem('debate_client_id');
+            if (!cid) {
+                cid = 'c_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('debate_client_id', cid);
+            }
+            return cid;
+        }
+
+        const CLIENT_ID = getClientId();
+        const countries = ['vietnam', 'china', 'cambodia', 'taiwan', 'indonesia',
+            'philippines', 'thailand', 'malaysia', 'singapore', 'brunei'];
+        const countryNames = {
+            vietnam: 'Vietnam', china: 'China', cambodia: 'Cambodia', taiwan: 'Taiwan',
+            indonesia: 'Indonesia', philippines: 'Philippines', thailand: 'Thailand',
+            malaysia: 'Malaysia', singapore: 'Singapore', brunei: 'Brunei'
+        };
+
+        // Bảng vote counts (local cache)
+        let votesCache = {};
+        countries.forEach(c => { votesCache[c] = 0; });
+
+        // ============================================================
+        // LẤY BINH CHỌT TỪ SUPABASE
+        // ============================================================
+        async function fetchVotes() {
+            if (!supabaseClient) {
+                // Không có Supabase -> dùng localStorage
+                const stored = localStorage.getItem('debate_votes');
+                if (stored) votesCache = JSON.parse(stored);
+                updateUI();
+                document.getElementById('loadingStatus').textContent = '⚠️ Không có backend — chỉ lưu local';
+                return;
+            }
+
+            try {
+                // Lấy tất cả votes
+                const { data, error } = await supabaseClient
+                    .from('votes')
+                    .select('country');
+
+                if (error) throw error;
+
+                // Đếm số vote cho mỗi quốc gia
+                const newVotes = {};
+                countries.forEach(c => { newVotes[c] = 0; });
+                data.forEach(row => {
+                    if (row.country && newVotes.hasOwnProperty(row.country)) {
+                        newVotes[row.country]++;
+                    }
+                });
+                votesCache = newVotes;
+                localStorage.setItem('debate_votes', JSON.stringify(newVotes));
+
+                // Kiểm tra đã vote chưa
+                const hasVoted = data.some(row => row.country && localStorage.getItem('debate_voted_' + CLIENT_ID));
+
+                updateUI();
+                document.getElementById('loadingStatus').textContent = '🟢 Đã kết nối';
+            } catch (err) {
+                console.warn('Lỗi fetch:', err);
+                document.getElementById('loadingStatus').textContent = '🔴 Lỗi kết nối';
+            }
+        }
+
+        // ============================================================
+        // GỬI VOTE LÊN SUPABASE
+        // ============================================================
+        async function sendVote(country) {
+            if (!supabaseClient) {
+                // Local-only: lưu vào localStorage
+                const clientVotedKey = 'debate_voted_' + CLIENT_ID;
+                const votedCountries = JSON.parse(localStorage.getItem(clientVotedKey) || '[]');
+                if (votedCountries.includes(country)) return false;
+                votedCountries.push(country);
+                localStorage.setItem(clientVotedKey, JSON.stringify(votedCountries));
+
+                votesCache[country] = (votesCache[country] || 0) + 1;
+                localStorage.setItem('debate_votes', JSON.stringify(votesCache));
+                return true;
+            }
+
+            try {
+                // Kiểm tra client đã vote chưa (đọc từ store local)
+                const clientVotedKey = 'debate_voted_' + CLIENT_ID;
+                const votedCountries = JSON.parse(localStorage.getItem(clientVotedKey) || '[]');
+
+                if (votedCountries.includes(country)) {
+                    alert('Bạn đã bình chọn cho quốc gia này rồi!');
+                    return false;
+                }
+
+                // Thêm bản ghi mới vào bảng votes
+                const { error } = await supabaseClient
+                    .from('votes')
+                    .insert({ country: country, client_id: CLIENT_ID });
+
+                if (error) throw error;
+
+                // Cập nhật cache local
+                votedCountries.push(country);
+                localStorage.setItem(clientVotedKey, JSON.stringify(votedCountries));
+                votesCache[country] = (votesCache[country] || 0) + 1;
+
+                return true;
+            } catch (err) {
+                console.warn('Lỗi gửi vote:', err);
+                alert('Lỗi khi gửi bình chọn: ' + err.message);
+                return false;
+            }
+        }
+
+        // ============================================================
+        // VOTE FUNCTION
+        // ============================================================
+        async function vote(country) {
+            const success = await sendVote(country);
+            if (success) {
+                updateUI();
+                // Disable nút vừa vote
+                const btn = document.querySelector('.vote-card[data-country="' + country + '"] .vote-btn-sm');
+                if (btn) {
+                    btn.disabled = true;
+                    btn.textContent = '✓ Đã bình chọn';
+                }
+                const card = document.querySelector('.vote-card[data-country="' + country + '"]');
+                if (card) card.classList.add('voted');
+            }
+        }
+
+        // ============================================================
+        // RESET VOTES
+        // ============================================================
+        async function resetVotes() {
+            if (!confirm('Bạn có chắc muốn reset TẤT CẢ bình chọn?')) return;
+
+            if (supabaseClient) {
+                const confirmServer = confirm('Cũng reset trên Supabase? (Ấn OK để đồng bộ cho mọi người)');
+                if (confirmServer) {
+                    try {
+                        // Xóa tất cả record trong bảng votes
+                        const { error } = await supabaseClient
+                            .from('votes')
+                            .delete()
+                            .neq('id', 0); // xóa tất cả
+
+                        if (error) throw error;
+                        alert('Đã reset trên Supabase!');
+                    } catch (err) {
+                        alert('Lỗi reset server: ' + err.message);
+                        return;
+                    }
+                }
+            }
+
+            // Reset local
+            countries.forEach(c => { votesCache[c] = 0; });
+            localStorage.setItem('debate_votes', JSON.stringify(votesCache));
+            localStorage.removeItem('debate_voted_' + CLIENT_ID);
+
+            updateUI();
+            document.querySelectorAll('.vote-card .vote-btn-sm').forEach(function(btn) {
+                btn.disabled = false;
+                btn.textContent = 'Bình chọn';
+            });
+            document.querySelectorAll('.vote-card.voted').forEach(function(card) {
+                card.classList.remove('voted');
+            });
+        }
+
+        // ============================================================
+        // UPDATE UI
+        // ============================================================
+        function updateUI() {
+            let total = 0;
+            countries.forEach(c => { total += votesCache[c] || 0; });
+
+            countries.forEach(country => {
+                const count = votesCache[country] || 0;
+                const el = document.getElementById('count-' + country);
+                if (el) el.textContent = count;
+            });
+
+            const resultsList = document.getElementById('resultsList');
+            if (!resultsList) return;
+            if (total === 0) {
+                resultsList.innerHTML = '<p style="text-align: center; color: #ccc;">Chưa có phiếu bầu nào</p>';
+                return;
+            }
+
+            resultsList.innerHTML = '';
+            countries.slice().sort((a, b) => (votesCache[b] || 0) - (votesCache[a] || 0)).forEach(function(country) {
+                const count = votesCache[country] || 0;
+                const percent = total > 0 ? ((count / total) * 100).toFixed(1) : 0;
+                const item = document.createElement('div');
+                item.className = 'result-item';
+                item.innerHTML =
+                    '<span class="result-flag">' + getFlagEmoji(country) + '</span>' +
+                    '<div class="result-info">' +
+                        '<div class="result-country">' + countryNames[country] + '</div>' +
+                        '<div class="result-bar-bg">' +
+                            '<div class="result-bar" style="width: ' + percent + '%"></div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="result-stats">' + count + ' (' + percent + '%)</div>';
+                resultsList.appendChild(item);
+            });
+        }
+
+        function getFlagEmoji(country) {
+            var flags = {
+                vietnam: '🇻🇳', china: '🇨🇳', cambodia: '🇰🇭', taiwan: '🇹🇼',
+                indonesia: '🇮🇩', philippines: '🇵🇭', thailand: '🇹🇭', malaysia: '🇲🇾',
+                singapore: '🇸🇬', brunei: '🇧🇳'
+            };
+            return flags[country] || '🏳️';
+        }
+
+        function scrollToVote() {
+            document.getElementById('voteGrid').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ============================================================
+        // KHỞI TẢI
+        // ============================================================
+        fetchVotes();
+        // Auto-refresh mỗi 5 giây để mọi người thấy kết quả real-time
+        setInterval(function() {
+            fetchVotes();
+        }, 5000);
+    </script>
+</body>
+</html>
