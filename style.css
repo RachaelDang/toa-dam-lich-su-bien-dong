@@ -10,8 +10,9 @@
  }
 
 body {
-    color: #ededed;
-}
+     color: #ededed;
+     background-color: #0a0a0a;
+ }
 
 .header {
     position: fixed;
@@ -1420,7 +1421,115 @@ body {
 }
 
 .delegate-info p {
-    font-size: 18px;
-    margin: 15px 0;
-    color: #ddd;
-}
+     font-size: 18px;
+     margin: 15px 0;
+     color: #ddd;
+ }
+
+ @media (max-width: 768px) {
+     .delegate-detail-page {
+         padding: 80px 5% 60px;
+     }
+
+     .delegate-detail-content h1 {
+         font-size: 32px;
+     }
+
+     .delegate-flag-frame {
+         width: 120px;
+         height: 120px;
+     }
+
+     .delegate-flag {
+         font-size: 60px;
+     }
+
+     .delegate-image {
+         width: 280px;
+         height: 280px;
+         margin: 15px auto 0;
+     }
+
+     .delegate-nav {
+         flex-direction: column;
+         gap: 10px;
+     }
+
+     .delegate-nav-btn {
+         width: 100%;
+         justify-content: center;
+     }
+
+     .delegates-grid {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 15px;
+     }
+
+     .home-content h1 {
+         font-size: 32px;
+     }
+
+     .context-grid {
+         grid-template-columns: 1fr;
+     }
+
+     .debate-grid {
+         grid-template-columns: 1fr;
+     }
+
+     .vote-grid {
+         grid-template-columns: repeat(2, 1fr);
+     }
+
+     .navbar {
+         gap: 10px;
+     }
+
+     .navbar a {
+         font-size: 14px;
+     }
+ }
+
+ @media (max-width: 480px) {
+     .delegate-detail-page {
+         padding: 60px 3% 40px;
+     }
+
+     .delegate-detail-content h1 {
+         font-size: 26px;
+     }
+
+     .delegate-image {
+         width: 220px;
+         height: 220px;
+     }
+
+     .delegates-grid {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 10px;
+     }
+
+     .delegate-card {
+         padding: 20px 10px;
+     }
+
+     .delegate-card h3 {
+         font-size: 16px;
+     }
+
+     .vote-grid {
+         grid-template-columns: 1fr;
+     }
+
+     .navbar {
+         gap: 6px;
+     }
+
+     .navbar a {
+         font-size: 12px;
+     }
+
+     .dkn-box {
+         display: none;
+     }
+ }
